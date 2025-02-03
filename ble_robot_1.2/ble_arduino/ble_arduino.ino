@@ -133,16 +133,13 @@ void handle_command() {
       if (!success) return;
       success = robot_cmd.get_next_value(float_c);
       if (!success) return;
-      tx_characteristic_float.writeValue(float_a);
-      tx_characteristic_float.writeValue(float_b);
-      tx_characteristic_float.writeValue(float_c);
 
       Serial.println("Three Floats: ");
       Serial.print(float_a);
       Serial.print(", ");
       Serial.print(float_b);
       Serial.print(", ");
-      Serial.println(float_c);
+      Serial.print(float_c);
       break;
     /*
          * Add a prefix and postfix to the string value extracted from the command string
