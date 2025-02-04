@@ -59,6 +59,7 @@ void build_array() {
 void build_temp() {
   for (int i = 0; i < 1000; i++) {
     temp_array[i] = (int)getTempDegC();
+    time_array[i] = (int)millis();
   }
 }
 
@@ -200,7 +201,6 @@ void handle_command() {
       break;
 
     case GET_TEMP_READINGS:
-      build_array();
       build_temp();
       for (int i = 0; i < 1000; i++) {
         tx_estring_value.clear();
