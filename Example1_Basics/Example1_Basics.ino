@@ -116,6 +116,8 @@ void handle_command(ICM_20948_I2C *myICM) {
             myICM->getAGMT();
             tx_estring_value.clear();
             tx_estring_value.append(atan2(myICM->accY(), myICM->accZ()) * 180 / M_PI);
+            tx_estring_value.append(",");
+            tx_estring_value.append((float)millis());
             tx_characteristic_string.writeValue(tx_estring_value.c_str());
           }
         }
@@ -125,6 +127,8 @@ void handle_command(ICM_20948_I2C *myICM) {
             myICM->getAGMT();
             tx_estring_value.clear();
             tx_estring_value.append(atan2(myICM->accX(), myICM->accZ()) * 180 / M_PI);
+            tx_estring_value.append(",");
+            tx_estring_value.append((float)millis());
             tx_characteristic_string.writeValue(tx_estring_value.c_str());
           }
         }
@@ -237,7 +241,7 @@ void handle_command(ICM_20948_I2C *myICM) {
             tx_estring_value.append(",");
             tx_estring_value.append((float)millis());
             tx_characteristic_string.writeValue(tx_estring_value.c_str());
-            delay(20);  // about 100Hz sampling rate accounting for time to send
+            delay(30);  // about 100Hz sampling rate accounting for time to send
                         // data
             last_time = millis();
           }
@@ -313,7 +317,7 @@ void handle_command(ICM_20948_I2C *myICM) {
         int i = 1;
         float dt = 0, start = millis(), last_time = start;
         times[0] = start;
-        while ((millis()-start) < duration) {
+        while ((millis() - start) < duration) {
           if (myICM->dataReady()) {
             myICM->getAGMT();
             dt = (millis() - last_time) / 1000.0;
@@ -480,7 +484,13 @@ void loop() {
         pitch = 0, roll = 0, yaw = 0;
   if (myICM.dataReady()) {
     myICM.getAGMT();
-    printScaledAGMT(&myICM);
+    pitch_a = atan2(myICM.accY(), myICM.accZ()) * 180 / M_PI;
+    roll_a = atan2(myICM.accX(), myICM.accZ()) * 180 / M_PI;
+    Serial.print("Pitch: ");
+    Serial.print(pitch_a);
+    Serial.print(" Roll: ");
+    Serial.println(roll_a);
+    // printScaledAGMT(&myICM);
   }
 
   // If a central is connected to the peripheral
