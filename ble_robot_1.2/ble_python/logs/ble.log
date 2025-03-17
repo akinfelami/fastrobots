@@ -422,3 +422,119 @@
 2025-02-25 10:48:34,608 | MainThread   | [WARNING ] | __del__             |: Not connected to a BLE device
 2025-02-25 10:48:34,897 | MainThread   | [WARNING ] | __del__             |: Could not delete BaseBLEController instance before exiting
 2025-02-25 10:48:34,899 | MainThread   | [WARNING ] | __del__             |: Not connected to a BLE device
+2025-03-10 22:25:27,145 | MainThread   | [DEBUG   ] | __init__            |: Python Info: sys.version_info(major=3, minor=11, micro=3, releaselevel='final', serial=0)
+2025-03-10 22:25:27,146 | MainThread   | [DEBUG   ] | __init__            |: System Info: macOS-14.7.4-arm64-arm-64bit
+2025-03-10 22:25:27,146 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-10 22:25:31,883 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-10 22:25:35,395 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-10 23:07:17,139 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 00:32:17,845 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 00:32:20,943 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 00:34:27,439 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 00:35:22,300 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 00:35:25,256 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 00:37:17,665 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 00:37:36,142 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 00:37:39,153 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 00:38:53,436 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 00:43:02,644 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 00:43:05,711 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 00:49:51,686 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 00:50:05,735 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 00:50:08,992 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 00:54:28,298 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 00:54:46,732 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 00:54:51,812 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 00:55:44,959 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 00:56:13,976 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 00:56:17,162 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 00:57:31,580 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 01:00:13,188 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 01:00:16,212 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 01:00:19,743 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 01:00:46,989 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 01:00:50,203 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 01:02:46,568 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 01:04:31,873 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 01:04:34,789 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 01:06:20,408 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 01:08:46,976 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 01:08:50,411 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 01:09:20,173 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 01:09:56,198 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 01:09:59,112 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 01:10:45,345 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 01:12:37,526 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 01:12:40,635 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 01:23:00,049 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 15:26:52,942 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 15:26:56,107 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 15:28:00,640 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 15:29:11,816 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 15:29:14,680 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 15:31:39,585 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 15:39:28,558 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 15:39:31,760 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 15:40:13,792 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 15:41:34,225 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 15:41:37,460 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 15:42:46,397 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 15:43:17,259 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 15:43:20,242 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 15:48:26,671 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 15:51:49,935 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 15:51:53,079 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 15:53:33,488 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 15:53:46,992 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 15:53:49,927 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 15:55:06,571 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 16:00:31,813 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 16:00:35,467 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 16:11:24,186 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 16:14:38,277 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 16:14:41,193 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 16:15:23,610 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-11 16:15:48,263 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-11 16:15:51,159 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-11 16:23:44,065 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 22:35:16,069 | MainThread   | [DEBUG   ] | __init__            |: Python Info: sys.version_info(major=3, minor=11, micro=3, releaselevel='final', serial=0)
+2025-03-16 22:35:16,070 | MainThread   | [DEBUG   ] | __init__            |: System Info: macOS-14.7.4-arm64-arm-64bit
+2025-03-16 22:35:16,070 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 22:35:19,137 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 22:36:58,310 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 22:37:33,837 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 22:37:37,140 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 22:41:05,644 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 22:44:28,920 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 22:44:31,812 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 22:48:52,156 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 22:49:05,031 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 22:49:08,209 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 22:49:49,588 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 22:50:20,359 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 22:50:24,092 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 22:51:07,013 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 22:51:48,519 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 22:51:52,292 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 22:52:42,568 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 23:00:58,904 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 23:01:01,987 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 23:04:26,534 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 23:04:48,351 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 23:04:51,795 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 23:21:16,443 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 23:22:57,320 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 23:23:01,697 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 23:24:45,357 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 23:25:01,225 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 23:25:04,443 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 23:27:43,592 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-16 23:30:20,291 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-16 23:30:23,356 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-16 23:42:12,804 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-17 00:30:00,908 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-17 00:30:04,384 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-17 00:47:09,400 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
+2025-03-17 00:53:06,670 | MainThread   | [INFO    ] | _connect            |: Looking for Artemis Nano Peripheral Device: c0:81:04:26:a3:64
+2025-03-17 00:53:09,548 | MainThread   | [INFO    ] | _connect            |: Connected to c0:81:04:26:a3:64
+2025-03-17 01:13:24,828 | MainThread   | [INFO    ] | disconnect_handler  |: Disconnected from A1C0DD95-B611-6CFA-AF80-6BCF50487F59
