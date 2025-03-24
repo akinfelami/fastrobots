@@ -7,3 +7,4 @@ class CMD(Enum):
     START_PID = 2
     STOP_PID = 3
     SET_PID_GAINS = 4
+    SET_SETPOINT = 5

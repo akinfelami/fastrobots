@@ -25,6 +25,7 @@
         "*.rexx": "rexx",
         "*.ejs": "html",
         "string": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "print": "cpp"
     }
 }
