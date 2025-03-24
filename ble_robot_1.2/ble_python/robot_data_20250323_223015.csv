@@ -1,4 +1,4 @@
-Time (ms),Distance (mm),Velocity (mm/s)
+Time (ms),Pwm,Distance (mm),Velocity (mm/s)
 16263.0,0,2008.0,0.0
 16361.0,0,1987.0,-214.285
 16459.0,0,2011.0,244.897
