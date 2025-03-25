@@ -196,69 +196,6 @@ void step_response(unsigned long test_duration, int step_pwm,
   current_time = millis();
 }
 
-// void step_response() {
-//   const unsigned long test_duration = 5000; // 5 seconds in milliseconds
-//   const int step_pwm = 100;                 // PWM value for the step input
-
-//   unsigned long start_time = millis();
-//   unsigned long current_time = start_time;
-
-//   // zero pwm for first 1 second
-
-//   // Record initial state
-//   if (curr_idx < MAX_DATA_SIZE) {
-//     times[curr_idx] = current_time; // Record actual timestamp
-//     pwm_vals[curr_idx] = 0;         // Initial PWM is 0
-//     tof_vals[curr_idx] =
-//         distance_sensor_1.getDistance(); // Get current distance
-//     vels[curr_idx] = 0;                  // Initial velocity is 0
-//     curr_idx++;
-//   }
-
-//   while ((current_time - start_time) < test_duration &&
-//          curr_idx < MAX_DATA_SIZE) {
-//     // Apply step input
-//     drive_in_a_straight_line(0, step_pwm,
-//                              1.25); // Forward direction with calibration 1.0
-
-//     // Get sensor data
-//     distance_sensor_1.startRanging();
-//     if (distance_sensor_1.checkForDataReady()) {
-//       int current_distance = distance_sensor_1.getDistance();
-//       distance_sensor_1.clearInterrupt();
-
-//       // Get current timestamp
-//       current_time = millis();
-
-//       // Calculate velocity (change in position / change in time)
-//       float velocity = 0;
-//       if (curr_idx > 0) {
-//         float delta_time =
-//             (current_time - times[curr_idx - 1]) / 1000.0; // Convert to
-//             seconds
-//         if (delta_time > 0) {
-//           velocity = (current_distance - tof_vals[curr_idx - 1]) /
-//           delta_time;
-//         }
-//       }
-
-//       // Record data
-//       times[curr_idx] = current_time; // Record actual timestamp
-//       pwm_vals[curr_idx] = step_pwm;
-//       tof_vals[curr_idx] = current_distance;
-//       vels[curr_idx] = velocity;
-//       curr_idx++;
-//     }
-//     distance_sensor_1.stopRanging();
-
-//     current_time = millis();
-//   }
-
-//   // Stop motors after test
-
-//   stop();
-// }
-
 void setup() {
   Wire.begin();
 

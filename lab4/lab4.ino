@@ -18,7 +18,7 @@ void loop() {
   // stop();
   // delay(5000);
 
-  drive_in_a_straight_line(1, 150, 1.25);
+  drive_in_a_straight_line(1, 80, 1.25);
 
 
 
@@ -72,20 +72,18 @@ void loop() {
 // }
 
 void drive_in_a_straight_line(int direction, int pwm, float calib) {
-  if (direction) { // forward
-
-    analogWrite(0, pwm * calib);
-    analogWrite(1, 0);
-    // delay(10);
-    analogWrite(2, 0);
-    analogWrite(3, pwm * calib);
-
-  } else {
-    // reverse
+  if (direction) {  // forward
     analogWrite(0, 0);
     analogWrite(1, pwm * calib);
     analogWrite(2, pwm * calib);
-    analogWrite(3, pwm * 0);
+    analogWrite(3, 0);
+
+  } else {
+    // reverse
+    analogWrite(0, pwm * calib);
+    analogWrite(1, 0);
+    analogWrite(2, 0);
+    analogWrite(3, pwm * calib);
   }
 }
 
