@@ -1,0 +1,25 @@
+2025-04-09 22:26:54,473 | MainThread   | [DEBUG   ] | run                 |: Starting Flatland
+2025-04-09 22:26:56,911 | MainThread   | [DEBUG   ] | signal_handler      |: Received SIGTERM
+2025-04-09 22:26:57,479 | MainThread   | [DEBUG   ] | __init__            |: | Observations per loop: 18
+2025-04-09 22:26:57,479 | MainThread   | [DEBUG   ] | run                 |: Exiting gracefully
+2025-04-10 11:50:36,117 | MainThread   | [DEBUG   ] | run                 |: Starting Flatland
+2025-04-10 11:50:36,876 | MainThread   | [DEBUG   ] | __init__            |: | Observations per loop: 18
+2025-04-10 11:52:20,604 | MainThread   | [DEBUG   ] | signal_handler      |: Received SIGTERM
+2025-04-10 11:52:20,605 | MainThread   | [DEBUG   ] | run                 |: Exiting gracefully
+2025-04-10 11:53:43,504 | MainThread   | [DEBUG   ] | run                 |: Starting Flatland
+2025-04-10 11:53:44,144 | MainThread   | [DEBUG   ] | __init__            |: | Observations per loop: 18
+2025-04-10 11:55:46,066 | MainThread   | [DEBUG   ] | signal_handler      |: Received SIGTERM
+2025-04-10 11:55:46,067 | MainThread   | [DEBUG   ] | run                 |: Exiting gracefully
+2025-04-10 11:55:54,856 | MainThread   | [DEBUG   ] | run                 |: Starting Flatland
+2025-04-10 11:55:55,461 | MainThread   | [DEBUG   ] | __init__            |: | Observations per loop: 18
+2025-04-10 11:57:45,645 | MainThread   | [DEBUG   ] | run                 |: Exiting gracefully
+2025-04-10 11:57:51,893 | MainThread   | [DEBUG   ] | run                 |: Starting Flatland
+2025-04-10 11:57:52,508 | MainThread   | [DEBUG   ] | __init__            |: | Observations per loop: 18
+2025-04-10 12:02:33,004 | MainThread   | [DEBUG   ] | signal_handler      |: Received SIGTERM
+2025-04-10 12:02:33,005 | MainThread   | [DEBUG   ] | run                 |: Exiting gracefully
+2025-04-10 12:05:08,540 | MainThread   | [DEBUG   ] | run                 |: Starting Flatland
+2025-04-10 12:05:09,298 | MainThread   | [DEBUG   ] | __init__            |: | Observations per loop: 18
+2025-04-10 12:07:08,627 | MainThread   | [DEBUG   ] | signal_handler      |: Received SIGTERM
+2025-04-10 12:07:08,627 | MainThread   | [DEBUG   ] | run                 |: Exiting gracefully
+2025-04-10 12:07:39,556 | MainThread   | [DEBUG   ] | run                 |: Starting Flatland
+2025-04-10 12:07:40,204 | MainThread   | [DEBUG   ] | __init__            |: | Observations per loop: 18

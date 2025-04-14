@@ -86,18 +86,18 @@ EString tx_estring_value;
 RobotCommand robot_cmd(":|");
 
 void drive_in_a_straight_line(int direction, int pwm, float calib) {
-  if (direction) {  // forward
-    analogWrite(0, 0);
-    analogWrite(1, pwm * calib);
-    analogWrite(2, pwm * calib);
-    analogWrite(3, 0);
+  if (direction) { 
+    analogWrite(0, pwm*calib);
+    analogWrite(1, 0);
+    analogWrite(2, 0);
+    analogWrite(3, pwm*calib);
 
   } else {
     // reverse
-    analogWrite(0, pwm * calib);
-    analogWrite(1, 0);
-    analogWrite(2, 0);
-    analogWrite(3, pwm * calib);
+    analogWrite(0, 0);
+    analogWrite(1, pwm*calib);
+    analogWrite(2, pwm*calib);
+    analogWrite(3, 0);
   }
 }
 
@@ -227,11 +227,11 @@ void init_pid() {
 
   mu = { (float)current_distance, 0.0 };
   is_pid_running = true;
-  curr_idx=0;
+  curr_idx = 0;
 }
 
-int pid_control(int curr_distance) {
-  int error =  curr_distance - pid_position_target;
+int pid_control(int dist) {
+  int error = dist - pid_position_target;
 
   unsigned long current_time = millis();
   float dt =
@@ -311,8 +311,8 @@ void setup() {
   }
   distance_sensor_1.setDistanceModeLong();
   distance_sensor_2.setDistanceModeLong();
-  distance_sensor_1.setTimingBudgetInMs(20);
-  distance_sensor_2.setTimingBudgetInMs(20);
+  distance_sensor_1.setTimingBudgetInMs(33);
+  distance_sensor_2.setTimingBudgetInMs(33);
 
   Serial.println("Both sensors online!");
 
@@ -379,12 +379,13 @@ void loop() {
       BLA::Matrix<2, 2> sigma_p = (Ad * (sigma * ~Ad)) + sig_u;
 
       if (distance_sensor_1.checkForDataReady()) {
-        current_distance = distance_sensor_1.getDistance();
+        int raw_distance = distance_sensor_1.getDistance();
         distance_sensor_1.clearInterrupt();
         distance_sensor_1.stopRanging();
 
         // Update Kalman Filter since we have new data
-        kf_update(mu_p, sigma_p, mu, sigma, current_distance);
+        kf_update(mu_p, sigma_p, mu, sigma, raw_distance);
+        current_distance = raw_distance;
       }
 
       float estim_dist = mu(0, 0);
@@ -405,11 +406,13 @@ void loop() {
         // Scale PWM to avoid deadband
         int scaled_pwm;
         if (last_pwm > 0) {
-          scaled_pwm = map(last_pwm, 0, 255, 100, 255);
-          drive_in_a_straight_line(1, scaled_pwm, 1.25);  // forward
+          scaled_pwm = map(last_pwm, 0, 255, 40, 255);
+          drive_in_a_straight_line(0, scaled_pwm, 1.25);  // forward
         } else {
-          scaled_pwm = map(abs(last_pwm), 0, 255, 100, 255);
-          drive_in_a_straight_line(0, scaled_pwm, 1.25);  // backward
+          scaled_pwm = map(abs(last_pwm), 0, 255, 40, 255);
+          drive_in_a_straight_line(1,
+
+                                   scaled_pwm, 1.25);  // backward
         }
       } else {
         stop();  // When PWM is exactly 0

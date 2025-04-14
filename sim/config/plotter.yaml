@@ -1,0 +1,7 @@
+[PLOTTERCONFIG]
+# Size of plot symbol used to draw points. Values range from [1-10]
+symbol_size: 5
+# Thickness of plot line. Values range from [1-10]
+line_thickness: 2
+# Position Tolerance to draw points (in m)
+position_tolerance: 0.03

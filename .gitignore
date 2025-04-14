@@ -1,1 +1,6 @@
 FastRobots_ble/
+sim/__pycache__/
+sim/build/
+sim/venv/
+.DS_Store
+.vscode/

@@ -1,0 +1,26 @@
+2025-04-09 22:26:55,611 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-09 22:26:56,297 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-10 11:50:31,778 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-10 11:52:19,678 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-10 11:52:20,481 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-10 11:53:43,196 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-10 11:53:43,824 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-10 11:55:46,063 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-10 11:55:46,670 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-10 11:55:47,275 | MainThread   | [ERROR   ] | on_click_sim_reset  |: Simulator is not running
+2025-04-10 11:55:47,882 | MainThread   | [ERROR   ] | on_click_plotter_reset|: Plotter is not running
+2025-04-10 11:55:54,601 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-10 11:55:55,420 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-10 11:57:50,730 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-10 11:57:51,641 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-10 11:57:52,308 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-10 12:02:33,004 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-10 12:02:36,123 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-10 12:05:08,204 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-10 12:05:08,972 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-10 12:07:08,621 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-10 12:07:09,230 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-10 12:07:36,874 | MainThread   | [ERROR   ] | stop                |: Simulator is not running
+2025-04-10 12:07:36,875 | MainThread   | [ERROR   ] | stop                |: Plotter is not running
+2025-04-10 12:07:39,337 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-10 12:07:39,955 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process

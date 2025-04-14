@@ -1,0 +1,87 @@
+# All measurements use MKS Units. Angles are measured in degrees, counter-clockwise
+
+# The virtual world is represented by a set of line segments. 
+# Each line segment is described by a start point (x,y) and an end point (x',y').
+# Each list item below describes such a line segment:
+# - (x,y), (x',y')
+world:
+  lines:
+    - (-1.6764,0.1524), (-1.6764,-1.3716)
+    - (-1.6764,-1.3716), (1.9812,-1.3716)
+    - (1.9812,-1.3716), (1.9812,1.3716)
+    - (1.9812,1.3716), (-0.7620,1.3716)
+    - (-0.7620,1.3716), (-0.7620,0.1524)
+    - (-0.7620,0.1524), (-1.6764,0.1524)
+    - (0.7620,-0.1524), (1.3716,-0.1524)
+    - (1.3716,-0.1524), (1.3716,0.4572)
+    - (1.3716,0.4572), (0.7620,0.4572)
+    - (0.7620,0.4572), (0.7620,-0.1524)
+    - (-0.1524,-1.3716), (-0.1524,-0.7620)
+    - (-0.1524,-0.7620), (0.1524,-0.7620)
+    - (0.1524,-0.7620), (0.1524,-1.3716)
+
+# Describe the robot parameters
+robot:
+  # Robot body description
+  dimensions:
+    length: 0.24
+    breadth: 0.12
+  sensors:
+  # Maximum range of the ToF sensors
+    max_range: 6
+    # Specify the angles (in a counter-clockwise direction) for the ToF sensor(s) where 0 degrees is at the robot's heading
+    angles: 
+      - 0
+    # IF AND ONLY IF "angles" is empty, sensor is defined by the total number of rays (total_rays),
+    # between start_angle and end_angle.
+    # For reference, here is the Python code internally used to generate angles: 
+    # np.linspace(start_angle, end_angle, total_rays, endpoint=False)
+    total_rays: 10
+    start_angle: 60
+    end_angle: 360
+  # Initial robot pose
+  initial_pose: 
+    x: 0         # In meters
+    y: 0         # In meters
+    theta: 0     # In degrees
+  # Mapper parameters
+  mapper:
+    # Map Limits across each dimension (x,y,a) in world coordinates ('a' stands for 'angle')
+    # NOTE: If you change any of the following 6 values, update max_cells_x, max_cells_y and max_cells_a, accordingly. 
+    min_x: -1.6764  # In meters
+    max_x: 1.9812   # In meters
+    min_y: -1.3716  # In meters
+    max_y: 1.3716   # In meters
+    min_a: -180     # In Degrees
+    max_a: 180      # In Degrees
+
+    # Discrete cell sizes
+    # It is recommended that you do not change these values, unless you truly know what you are doing
+    cell_size_x: 0.3048
+    cell_size_y: 0.3048 
+    cell_size_a: 20
+
+    # Number of cells in each dimensions(x,y,a)
+    # Calculated based on the range divided by the cell size in each dimension
+    # Ex: max_cells_x = (max_x-min_x)/cell_size_x
+    # Must be integers
+    max_cells_x: 12  # Total number of grid cells in the x direction
+    max_cells_y: 9   # Total number of grid cells in the y direction
+    max_cells_a: 18  # Total number of grid cells in the a direction
+
+    # Number of observations during the rotation behavior
+    # It is also the number of observations made in each discrete cell
+    # Must be an integer
+    observations_count: 18
+
+    # Maximum length used for ray tracing used to calculate the map
+    ray_tracing_length: 6
+  
+  # Localization parameters
+  localization:
+    # Noise parameters for Odometry Model
+    odom_trans_sigma: 0.45   # Should be greater than half the cell size
+    odom_rot_sigma: 15      # Should be greater than half the cell size
+    
+    # Sensor noise
+    sensor_sigma: 0.1
