@@ -421,7 +421,7 @@ void loop() {
     if (is_pid_running) {
       int pwm;
       for (int i = 0; i < 360; i += 25) {
-        pid_target = i;
+        pid_target = yaw_gy + i;
         unsigned long start = millis();
         while ((millis() - start) < 500) {
           unsigned long current_time = millis();
