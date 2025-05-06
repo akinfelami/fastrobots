@@ -1,5 +1,5 @@
 #include "ICM_20948.h"
-#include "SparkFun_VL53L1X.h" //Click here to get the library: http://librarymanager/All#SparkFun_VL53L1X
+#include "SparkFun_VL53L1X.h"  //Click here to get the library: http://librarymanager/All#SparkFun_VL53L1X
 #include <Wire.h>
 
 #include "BLECStringCharacteristic.h"
@@ -58,14 +58,29 @@ enum command_types {
   START_PID,
   STOP_PID,
   SET_PID_GAINS,
-  SET_SETPOINT
+  SET_SETPOINT,
+  DONE
 };
 
 EString tx_estring_value;
 RobotCommand robot_cmd(":|");
 
+void turn_around(int direction, int pwm, float calib) {
+  if (direction) {
+    analogWrite(0, 0);
+    analogWrite(1, pwm * calib);
+    analogWrite(2, 0);
+    analogWrite(3, pwm * calib);
+  } else {
+    analogWrite(0, 0);
+    analogWrite(1, pwm * calib);
+    analogWrite(2, pwm * calib);
+    analogWrite(3, 0);
+  }
+}
+
 void drive_in_a_straight_line(int direction, int pwm, float calib) {
-  if (direction) { // forward
+  if (direction) {  // forward
 
     analogWrite(0, pwm * calib);
     analogWrite(1, 0);
@@ -102,6 +117,45 @@ void stop() {
   analogWrite(3, 0);
 }
 
+double last_wrap_angle = 0;
+int num_wraps = 0;
+
+// Take a "wrapped" angle and return an "unwrapped" angle
+double angle_no_wrap(double curr_angle) {
+  // Adjust angle based on last angle
+  if ((curr_angle < 0) && (last_wrap_angle > 90)) {
+    // Overflow
+    curr_angle = curr_angle + 360;
+  } else if ((curr_angle > 0) && (last_wrap_angle < -90)) {
+    // Underflow
+    curr_angle = curr_angle - 360;
+  }
+
+  // Adjust angle based on wrapping
+  if (num_wraps > 0) {
+    for (int i = 0; i < num_wraps; i++) {
+      curr_angle = curr_angle + 360;
+    }
+  } else if (num_wraps < 0) {
+    for (int i = 0; i > num_wraps; i--) {
+      curr_angle = curr_angle - 360;
+    }
+  }
+
+  // Update last angle and wrapping
+  last_wrap_angle = curr_angle;
+  num_wraps = 0;
+  while (last_wrap_angle > 180) {
+    num_wraps++;
+    last_wrap_angle -= 360;
+  }
+  while (last_wrap_angle < -180) {
+    num_wraps--;
+    last_wrap_angle += 360;
+  }
+  return curr_angle;
+}
+
 void handle_command() {
   // Set the command string from the characteristic value
   robot_cmd.set_cmd_string(rx_characteristic_string.value(),
@@ -116,88 +170,102 @@ void handle_command() {
   }
 
   switch (cmd_type) {
-  case PING:
-    tx_estring_value.clear();
-    tx_estring_value.append("PONG");
-    tx_characteristic_string.writeValue(tx_estring_value.c_str());
-
-    Serial.print("Sent back: ");
-    Serial.println(tx_estring_value.c_str());
-    break;
-  case SEND_PID_DATA: {
-    size_t i;
-    while (i < curr_idx && i < MAX_DATA_SIZE) {
+    case PING:
       tx_estring_value.clear();
-      tx_estring_value.append(times[i]);
-      tx_estring_value.append("|");
-      tx_estring_value.append(imu_vals[i]);
-      tx_estring_value.append("|");
-      tx_estring_value.append(pwm_vals[i]);
-      tx_estring_value.append("|");
-      tx_estring_value.append(tof_vals[i]);
+      tx_estring_value.append("PONG");
       tx_characteristic_string.writeValue(tx_estring_value.c_str());
-      i++;
-    }
-    // reset the index
-    curr_idx = 0;
-    break;
-  }
-  case START_PID: {
-    is_pid_running = true;
-    accumulated_error = 0.0;  // Reset integral term
-    last_pid_time = millis(); // Reset time
-    curr_idx = 0;
-    break;
-  }
-  case STOP_PID: {
-    is_pid_running = false;
-    stop();
-    // curr_idx = 0;
-    break;
-  }
-  case SET_PID_GAINS: {
-    float new_kp;
-    float new_ki;
-    float new_kd;
 
-    success = robot_cmd.get_next_value(new_kp);
-    if (!success) {
-      return;
-    }
-    success = robot_cmd.get_next_value(new_ki);
-    if (!success) {
-      return;
-    }
-    success = robot_cmd.get_next_value(new_kd);
-    if (!success) {
-      return;
-    }
-    kp = new_kp;
-    ki = new_ki;
-    kd = new_kd;
+      Serial.print("Sent back: ");
+      Serial.println(tx_estring_value.c_str());
+      break;
+    case SEND_PID_DATA:
+      {
+        size_t i = 0;
+        while (i < curr_idx && i < MAX_DATA_SIZE) {
+          tx_estring_value.clear();
+          tx_estring_value.append(times[i]);
+          tx_estring_value.append("|");
+          tx_estring_value.append(imu_vals[i]);
+          tx_estring_value.append("|");
+          tx_estring_value.append(pwm_vals[i]);
+          tx_estring_value.append("|");
+          tx_estring_value.append(tof_vals[i]);
+          tx_characteristic_string.writeValue(tx_estring_value.c_str());
+          i++;
+        }
+        // reset the index
+        curr_idx = 0;
+        break;
+      }
+    case START_PID:
+      {
+        is_pid_running = true;
+        accumulated_error = 0.0;   // Reset integral term
+        last_pid_time = millis();  // Reset time
+        curr_idx = 0;
+        break;
+      }
+    case STOP_PID:
+      {
+        is_pid_running = false;
+        stop();
+        // curr_idx = 0;
+        break;
+      }
+    case SET_PID_GAINS:
+      {
+        float new_kp;
+        float new_ki;
+        float new_kd;
 
-    Serial.println("PID Gains set!");
-    Serial.print(new_kp);
-    Serial.print(", ");
-    Serial.print(new_ki);
-    Serial.print(", ");
-    Serial.print(new_kd);
-    break;
-  }
+        success = robot_cmd.get_next_value(new_kp);
+        if (!success) {
+          return;
+        }
+        success = robot_cmd.get_next_value(new_ki);
+        if (!success) {
+          return;
+        }
+        success = robot_cmd.get_next_value(new_kd);
+        if (!success) {
+          return;
+        }
+        kp = new_kp;
+        ki = new_ki;
+        kd = new_kd;
 
-  case SET_SETPOINT: {
-    float new_setpoint;
-    success = robot_cmd.get_next_value(new_setpoint);
-    if (!success) {
-      return;
-    }
-    pid_target = new_setpoint;
-    Serial.println("Setpoint set!");
-    Serial.print(new_setpoint);
-    break;
-  }
-  default:
-    break;
+        Serial.println("PID Gains set!");
+        Serial.print(new_kp);
+        Serial.print(", ");
+        Serial.print(new_ki);
+        Serial.print(", ");
+        Serial.print(new_kd);
+        break;
+      }
+
+    case SET_SETPOINT:
+      {
+        float new_setpoint;
+        success = robot_cmd.get_next_value(new_setpoint);
+        if (!success) {
+          return;
+        }
+        pid_target = new_setpoint;
+        Serial.println("Setpoint set!");
+        Serial.print(new_setpoint);
+        break;
+      }
+    case DONE:
+      {
+        is_pid_running = false;
+        stop();
+        tx_estring_value.clear();
+        tx_estring_value.append("DONE");
+        tx_characteristic_string.writeValue(tx_estring_value.c_str());
+        break;
+      }
+    default:
+      break;
   }
 }
 
@@ -206,7 +274,7 @@ int pid_control(int curr_angle) {
   int error = pid_target - curr_angle;
 
   unsigned long current_time = millis();
-  float dt = (float)(current_time - last_pid_time) / 1000.0; // Convert ms to
+  float dt = (float)(current_time - last_pid_time) / 1000.0;  // Convert ms to
   last_pid_time = current_time;
 
   if (dt > 0) {
@@ -240,9 +308,9 @@ int pid_control(int curr_angle) {
 }
 
 #ifdef USE_SPI
-ICM_20948_SPI myICM; // If using SPI create an ICM_20948_SPI object
+ICM_20948_SPI myICM;  // If using SPI create an ICM_20948_SPI object
 #else
-ICM_20948_I2C myICM; // Otherwise create an ICM_20948_I2C object
+ICM_20948_I2C myICM;  // Otherwise create an ICM_20948_I2C object
 #endif
 #define AD0_VAL 1
 #define SPI_PORT SPI
@@ -263,8 +331,8 @@ void setup() {
 #endif
 
   // Left Wheels
-  pinMode(0, OUTPUT); // xIN2
-  pinMode(1, OUTPUT); // xIN1
+  pinMode(0, OUTPUT);  // xIN2
+  pinMode(1, OUTPUT);  // xIN1
 
   // Right Wheels
   pinMode(2, OUTPUT);
@@ -288,8 +356,7 @@ void setup() {
   success &= (myICM.initializeDMP() == ICM_20948_Stat_Ok);
 
   // Enable the DMP orientation sensor and set to 2000 dps
-  success &= (myICM.enableDMPSensor(INV_ICM20948_SENSOR_GAME_ROTATION_VECTOR) ==
-              ICM_20948_Stat_Ok);
+  success &= (myICM.enableDMPSensor(INV_ICM20948_SENSOR_GAME_ROTATION_VECTOR) == ICM_20948_Stat_Ok);
 
   // Configure DMP to output data at maximum ORD
   success &= (myICM.setDMPODRrate(DMP_ODR_Reg_Quat6, 0) == ICM_20948_Stat_Ok);
@@ -344,18 +411,18 @@ void setup() {
   distance_sensor_2.setI2CAddress(0x77);
   digitalWrite(SHUTDOWN_PIN, HIGH);
 
-  if (distance_sensor_1.begin() != 0) // Begin returns 0 on a good init
+  if (distance_sensor_1.begin() != 0)  // Begin returns 0 on a good init
   {
     Serial.println(
-        "Sensor 1 failed to begin. Please check wiring. Freezing...");
+      "Sensor 1 failed to begin. Please check wiring. Freezing...");
     while (1)
       ;
   }
 
-  if (distance_sensor_2.begin() != 0) // Begin returns 0 on a good init
+  if (distance_sensor_2.begin() != 0)  // Begin returns 0 on a good init
   {
     Serial.println(
-        "Sensor 2 failed to begin. Please check wiring. Freezing...");
+      "Sensor 2 failed to begin. Please check wiring. Freezing...");
     while (1)
       ;
   }
@@ -379,8 +446,7 @@ void record_dmp_data() {
   myICM.readDMPdataFromFIFO(&dmp);
 
   // Check if the myICM has data
-  if ((myICM.status != ICM_20948_Stat_Ok) &&
-      (myICM.status != ICM_20948_Stat_FIFOMoreDataAvail))
+  if ((myICM.status != ICM_20948_Stat_Ok) && (myICM.status != ICM_20948_Stat_FIFOMoreDataAvail))
     return;
 
   // Check for Quat6 orientation data
@@ -398,7 +464,8 @@ void record_dmp_data() {
 
   siny = 2.0 * (qw * qz + qx * qy);
   cosy = 1.0 - 2.0 * (qy * qy + qz * qz);
-  yaw_gy = (float)(atan2(siny, cosy) * 180.0 / PI);
+  float wrapped_yaw = (float)(atan2(siny, cosy) * 180.0 / PI);
+  yaw_gy = angle_no_wrap(wrapped_yaw);
 
   // Serial.print("YAW: ");
   // Serial.println(yaw_gy);
@@ -409,8 +476,8 @@ void record_dmp_data() {
   }
 }
 
+// ...existing code...
 void loop() {
-  // put your main code here, to run repeatedly:
   BLEDevice central = BLE.central();
 
   while (central.connected()) {
@@ -420,54 +487,85 @@ void loop() {
 
     if (is_pid_running) {
       int pwm;
-      for (int i = 0; i < 360; i += 25) {
-        pid_target = yaw_gy + i;
-        unsigned long start = millis();
-        while ((millis() - start) < 500) {
-          unsigned long current_time = millis();
+      float start_yaw = yaw_gy;
+      for (int step = 0; step < 18; step++) {
+        pid_target =
+          start_yaw + (step * 20);  // Increment target by 25 deg each step
+
+        do {
           record_dmp_data();
           pwm = pid_control(yaw_gy);
+          // Serial.print("PWM: ");
+          // Serial.println(pwm);
+          // Serial.print("Target: ");
+          // Serial.println(pid_target);
 
-          // Drive motors with scaled PWM and proper direction
-          if (abs(pwm) > 0) {
-            // Scale PWM to avoid deadband
-            int scaled_pwm;
-            if (pwm > 0) {
-              scaled_pwm = map(pwm, 0, 255, 70, 255);
-              // Serial.print("Scaled_pwm: ");
-              // Serial.println(scaled_pwm);
-              drive_in_a_straight_line(1, scaled_pwm, 1.25); // forward
-            } else {
-              scaled_pwm = map(abs(pwm), 0, 255, 70, 255);
-              // Serial.print("Scaled_pwm: ");
-              // Serial.println(scaled_pwm);
-              drive_in_a_straight_line(0, scaled_pwm, 1.25); // backward
-            }
-          } else {
-            stop(); // When PWM is exactly 0
+          int scaled_pwm = map(abs(pwm), 0, 255, 100, 255);
+          if (pwm > 0) {
+            turn_around(1, scaled_pwm, 1.25);
+          } else if (pwm < 0) {
+            turn_around(0, scaled_pwm, 1.25);
           }
-        }
-        // Stop and collect TOF Readings
+
+        } while (abs(yaw_gy - pid_target) >= 3.0);
         stop();
-        for (int k = 0; k < 4; k++) {
-          distance_sensor_1.startRanging();
-          while (!distance_sensor_1.checkForDataReady()) {
-            delay(1);
-          }
-          int distance = distance_sensor_1.getDistance();
-          // Log the data
-          // Log the data
-          if (curr_idx < MAX_DATA_SIZE) {
-            times[curr_idx] = (float)millis();
-            pwm_vals[curr_idx] = pwm;
-            imu_vals[curr_idx] = yaw_gy;
-            tof_vals[curr_idx] = distance;
-            curr_idx++;
-          }
-          distance_sensor_1.clearInterrupt();
-          distance_sensor_1.stopRanging();
+
+        distance_sensor_1.startRanging();
+        while (!distance_sensor_1.checkForDataReady()) {
+          delay(1);
         }
+        int distance = distance_sensor_1.getDistance();
+
+        // Log the data
+        // Serial.print("Logging data...");
+        if (curr_idx < MAX_DATA_SIZE) {
+          times[curr_idx] = (float)millis();
+          pwm_vals[curr_idx] = pwm;
+          imu_vals[curr_idx] = yaw_gy;
+          tof_vals[curr_idx] = distance;
+          curr_idx++;
+        }
+        distance_sensor_1.clearInterrupt();
+        distance_sensor_1.stopRanging();
       }
+      // Add one more target at exactly 360 degrees
+      // pid_target = start_yaw + 360;
+      // do {
+      //   record_dmp_data();
+      //   pwm = pid_control(yaw_gy);
+
+      //   int scaled_pwm = map(abs(pwm), 0, 255, 70, 255);
+      //   if (pwm > 0) {
+      //     turn_around(1, scaled_pwm, 1.25);
+      //   } else if (pwm < 0) {
+      //     turn_around(0, scaled_pwm, 1.25);
+      //   }
+      // } while (abs(yaw_gy - pid_target) >= 3.0);
+      // stop();
+
+      // distance_sensor_1.startRanging();
+      // while (!distance_sensor_1.checkForDataReady()) {
+      //   delay(1);
+      // }
+      // int distance = distance_sensor_1.getDistance();
+
+      // // Log the data for 360
+      // if (curr_idx < MAX_DATA_SIZE) {
+      //   times[curr_idx] = (float)millis();
+      //   pwm_vals[curr_idx] = pwm;
+      //   imu_vals[curr_idx] = yaw_gy;
+      //   tof_vals[curr_idx] = distance;
+      //   curr_idx++;
+      // }
+      // distance_sensor_1.clearInterrupt();
+      // distance_sensor_1.stopRanging();
+
+      is_pid_running = false;  // Stop after 360
+
+      stop();
+      tx_estring_value.clear();
+      tx_estring_value.append("DONE");
+      tx_characteristic_string.writeValue(tx_estring_value.c_str());
     }
   }
 

@@ -1,3 +1,228 @@
 2025-04-09 22:26:28,940 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
 2025-04-10 11:48:41,414 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
 2025-04-10 11:50:31,776 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 10:07:25,377 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 10:39:33,592 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 10:47:50,971 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 12:11:10,097 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 12:13:30,956 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 14:15:54,900 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 14:16:20,902 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 14:18:47,751 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 14:24:47,852 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 14:37:14,835 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 15:05:02,851 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 15:18:06,285 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 15:18:38,463 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 15:22:25,996 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 15:23:19,367 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 15:23:20,789 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-22 15:29:39,501 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 15:31:35,695 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 15:34:44,846 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 15:35:42,477 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 15:47:04,328 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 15:49:29,383 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 15:50:26,772 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 15:53:33,653 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 15:54:00,018 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 15:57:50,736 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 15:58:33,573 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 16:06:34,771 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 16:08:50,898 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 16:09:05,149 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-22 16:09:05,199 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-22 16:11:02,821 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 16:11:25,104 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 16:11:37,435 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-22 16:11:37,474 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-22 16:13:17,693 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 16:13:59,170 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 16:14:28,631 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-22 16:14:28,688 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-22 16:14:33,753 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-22 16:15:36,474 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 16:15:49,994 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 16:16:10,755 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-22 16:16:10,844 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-22 16:16:15,906 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-22 16:17:05,156 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-22 16:17:25,577 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-22 16:17:54,199 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-22 16:17:54,210 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-22 16:17:59,320 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 11:33:20,284 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log initialized.
+2025-04-28 11:33:50,193 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 11:34:06,784 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-28 11:34:06,810 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-28 11:34:11,903 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 11:34:11,904 | MainThread   | [INFO    ] | perform_observation_loop|: Received 0 results
+2025-04-28 11:38:15,460 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-28 11:39:04,816 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 11:39:35,596 | MainThread   | [INFO    ] | notification_handler|: DONE notification (ignored until data arrived)
+2025-04-28 11:41:25,150 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.
+2025-04-28 11:41:45,889 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 11:42:58,882 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 11:43:21,202 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-28 11:43:21,220 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-28 11:43:21,291 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,292 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,322 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,323 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,324 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,351 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,384 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,413 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,413 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,442 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,443 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,443 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,471 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,501 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,531 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,532 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,562 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,562 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:21,591 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:43:26,261 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 11:43:26,262 | MainThread   | [INFO    ] | perform_observation_loop|: Received 19 results
+2025-04-28 11:45:22,255 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 11:45:47,967 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-28 11:45:48,037 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-28 11:45:48,116 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,117 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,146 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,148 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,148 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,176 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,177 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,206 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,207 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,208 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,237 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,238 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,267 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,268 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,268 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,297 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,300 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,326 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:48,328 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:45:53,087 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 11:45:53,088 | MainThread   | [INFO    ] | perform_observation_loop|: [[83017.0, -2.0, 0, 1099.0], [83939.0, 17.0, 0, 920.0], [85660.0, 37.0, 0, 2604.0], [90873.0, 57.0, 0, 504.0], [91422.0, 77.0, 0, 340.0], [93190.0, 97.0, 0, 313.0], [93918.0, 117.0, 0, 784.0], [96029.0, 137.0, 0, 1289.0], [97408.0, 157.0, 0, 737.0], [98417.0, 177.0, 0, 529.0], [99057.0, 198.0, 0, 460.0], [99777.0, 217.0, 0, 475.0], [100794.0, 237.0, 0, 524.0], [102975.0, 257.0, 0, 654.0], [104115.0, 277.0, 0, 558.0], [104989.0, 297.0, 0, 536.0], [105447.0, 317.0, 0, 570.0], [105943.0, 338.0, 0, 446.0], [106441.0, 357.0, 0, 517.0]]
+2025-04-28 11:49:26,641 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 11:49:48,421 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-28 11:49:48,499 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-28 11:49:48,571 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,572 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,600 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,602 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,603 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,631 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,632 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,690 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,691 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,720 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,722 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,750 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,780 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,781 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,811 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,813 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,840 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:48,870 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 11:49:53,541 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 11:49:53,541 | MainThread   | [INFO    ] | perform_observation_loop|: [[34926.0, -2.0, 0, 790.0], [38198.0, 17.0, 0, 1382.0], [38764.0, 37.0, 0, 1405.0], [39718.0, 57.0, 0, 801.0], [40303.0, 77.0, 0, 1007.0], [40952.0, 97.0, 0, 3287.0], [43406.0, 117.0, 0, 2617.0], [45164.0, 137.0, 0, 1254.0], [46147.0, 158.0, 0, 685.0], [46683.0, 177.0, 0, 419.0], [47238.0, 197.0, 0, 335.0], [49480.0, 217.0, 0, 297.0], [50530.0, 237.0, 0, 279.0], [51224.0, 257.0, 0, 323.0], [52683.0, 278.0, 0, 546.0], [53307.0, 297.0, 0, 525.0], [54105.0, 317.0, 0, 529.0], [54767.0, 338.0, 0, 612.0]]
+2025-04-28 12:00:34,477 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 12:00:55,267 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-28 12:00:55,326 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-28 12:00:55,418 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,419 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,449 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,449 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,450 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,477 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,478 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,479 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,508 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,510 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,511 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,538 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,540 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,567 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,568 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,597 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,598 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:00:55,599 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:01:00,387 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 12:01:00,388 | MainThread   | [INFO    ] | perform_observation_loop|: [[543064.0, 0.0, 0, 450.0], [544294.0, 17.0, 0, 421.0], [544743.0, 37.0, 0, 472.0], [545340.0, 57.0, 0, 586.0], [547789.0, 77.0, 0, 868.0], [549158.0, 97.0, 0, 1966.0], [551669.0, 117.0, 0, 750.0], [552749.0, 137.0, 0, 802.0], [554472.0, 157.0, 0, 2140.0], [555732.0, 177.0, 0, 3145.0], [556584.0, 197.0, 0, 1634.0], [557165.0, 217.0, 0, 1312.0], [557615.0, 237.0, 0, 572.0], [558285.0, 257.0, 0, 406.0], [560509.0, 277.0, 0, 322.0], [562043.0, 297.0, 0, 326.0], [563287.0, 317.0, 0, 394.0], [563769.0, 338.0, 0, 549.0]]
+2025-04-28 12:11:23,562 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 12:11:41,565 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-28 12:11:41,582 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-28 12:11:41,656 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,656 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,684 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,685 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,686 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,687 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,716 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,746 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,747 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,775 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,776 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,776 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,803 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,804 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,835 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,836 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,836 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:41,866 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:11:46,627 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 12:11:46,627 | MainThread   | [INFO    ] | perform_observation_loop|: [[43453.0, 0.0, 0, 770.0], [44365.0, 18.0, 0, 2973.0], [44885.0, 37.0, 0, 2850.0], [46765.0, 57.0, 0, 3278.0], [47525.0, 78.0, 0, 2369.0], [48063.0, 97.0, 0, 774.0], [48572.0, 118.0, 0, 742.0], [49017.0, 138.0, 0, 893.0], [50153.0, 157.0, 0, 982.0], [51036.0, 177.0, 0, 756.0], [55007.0, 197.0, 0, 673.0], [55539.0, 217.0, 0, 724.0], [55964.0, 237.0, 0, 874.0], [56494.0, 257.0, 0, 940.0], [57181.0, 277.0, 0, 737.0], [58802.0, 297.0, 0, 692.0], [60048.0, 317.0, 0, 745.0], [61384.0, 337.0, 0, 934.0]]
+2025-04-28 12:14:37,670 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 12:15:05,961 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-28 12:15:05,967 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-28 12:15:06,051 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,052 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,081 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,085 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,086 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,110 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,112 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,140 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,141 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,142 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,170 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,172 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,202 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,202 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,203 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,230 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,232 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:06,260 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:15:11,021 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 12:15:11,022 | MainThread   | [INFO    ] | perform_observation_loop|: [[48012.0, -2.0, 0, 2019.0], [48484.0, 17.0, 0, 2003.0], [48929.0, 37.0, 0, 1003.0], [49411.0, 57.0, 0, 640.0], [52543.0, 77.0, 0, 478.0], [53506.0, 97.0, 0, 437.0], [54462.0, 117.0, 0, 475.0], [55543.0, 137.0, 0, 599.0], [56370.0, 157.0, 0, 799.0], [57470.0, 177.0, 0, 687.0], [61056.0, 197.0, 0, 644.0], [62005.0, 217.0, 0, 757.0], [62502.0, 237.0, 0, 1220.0], [62983.0, 257.0, 0, 2643.0], [63701.0, 278.0, 0, 1936.0], [64340.0, 298.0, 0, 2459.0], [66601.0, 317.0, 0, 1428.0], [69238.0, 337.0, 0, 964.0]]
+2025-04-28 12:16:26,692 | MainThread   | [INFO    ] | perform_observation_loop|: Performing Observation Loop
+2025-04-28 12:16:44,333 | MainThread   | [INFO    ] | notification_handler|: Done Notification Received
+2025-04-28 12:16:44,422 | MainThread   | [INFO    ] | perform_observation_loop|: Collecting Data
+2025-04-28 12:16:44,513 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,514 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,543 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,544 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,546 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,573 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,574 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,603 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,604 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,605 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,634 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,636 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,665 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,665 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,666 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,696 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,696 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:44,724 | MainThread   | [INFO    ] | notification_handler|: Data Notification Received...processing
+2025-04-28 12:16:49,484 | MainThread   | [INFO    ] | perform_observation_loop|: Finished receiving data.
+2025-04-28 12:16:49,485 | MainThread   | [INFO    ] | perform_observation_loop|: [[25789.0, 0.0, 0, 440.0], [26787.0, 17.0, 0, 444.0], [27019.0, 37.0, 0, 459.0], [27441.0, 58.0, 0, 583.0], [28307.0, 77.0, 0, 523.0], [29840.0, 97.0, 0, 419.0], [31596.0, 117.0, 0, 395.0], [32188.0, 137.0, 0, 460.0], [33053.0, 157.0, 0, 637.0], [33677.0, 177.0, 0, 1071.0], [36757.0, 197.0, 0, 2482.0], [37523.0, 217.0, 0, 3015.0], [39761.0, 237.0, 0, 708.0], [40741.0, 257.0, 0, 475.0], [41279.0, 277.0, 0, 430.0], [41667.0, 297.0, 0, 1721.0], [42198.0, 317.0, 0, 1075.0], [43346.0, 337.0, 0, 642.0]]
+2025-04-28 14:05:55,764 | MainThread   | [INFO    ] | get_logger          |: Logger demo_notebook.log already initialized.

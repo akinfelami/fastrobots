@@ -1,5 +1,6 @@
 import time
 
+
 class Trajectory():
     def __init__(self, loc):
 
@@ -39,7 +40,7 @@ class Trajectory():
 
     def perform_motion(self, t):
         """Perform motion based on motion command at discrete time step t.
-        
+
         Keyword arguments:
             t -- discrete time step
         """
@@ -47,19 +48,19 @@ class Trajectory():
         duration = vel_cmd[3]
 
         # Rot1
-        if(vel_cmd[0]):
+        if (vel_cmd[0]):
             self.robot.set_vel(0.0, vel_cmd[0])
             time.sleep(duration)
             self.robot.set_vel(0.0, 0.0)
 
         # Trans
-        if(vel_cmd[1]):
+        if (vel_cmd[1]):
             self.robot.set_vel(vel_cmd[1], 0)
             time.sleep(duration)
             self.robot.set_vel(0.0, 0.0)
 
         # Rot2
-        if(vel_cmd[2]):
+        if (vel_cmd[2]):
             self.robot.set_vel(0.0, vel_cmd[2])
             time.sleep(duration)
             self.robot.set_vel(0.0, 0.0)
@@ -69,16 +70,16 @@ class Trajectory():
         perform motion based on motion command, and
         record odometry and ground truth after motion
         at discrete time step t.
-        
+
         Keyword arguments:
             t -- discrete time step
         """
-        if(t == 0):
+        if (t == 0):
             self.robot.reset()
 
         # Record Odom and GT before motion
         prev_odom, prev_gt = self.robot.get_pose()
-        
+
         # Perform Motion
         self.perform_motion(t)
 
@@ -86,37 +87,37 @@ class Trajectory():
         current_odom, current_gt = self.robot.get_pose()
 
         return prev_odom, current_odom, prev_gt, current_gt
-    
-    def execute_custom_motion(self, rot1, trans, rot2, delta_t = 1, reset=False):
+
+    def execute_custom_motion(self, rot1, trans, rot2, delta_t=1, reset=False):
         """Execute a custom motion command (rot1, trans, rot2) 
         where each sub-step velocity is applied for delta_t secs
-        
+
         Keyword arguments:
             rot1    --  velocity of rotation 1
             trans   --  velocity of translation
             rot2    --  velocity of rotation 2
             delta_t --  time durattion for each sub-step velocities
         """
-        if(reset == True):
+        if (reset == True):
             self.robot.reset()
 
         # Record Odom and GT before motion
         prev_odom, prev_gt = self.robot.get_pose()
 
         # Rot1
-        if(rot1):
+        if (rot1):
             self.robot.set_vel(0.0, rot1)
             time.sleep(delta_t)
             self.robot.set_vel(0.0, 0.0)
 
         # Trans
-        if(trans):
+        if (trans):
             self.robot.set_vel(trans, 0)
             time.sleep(delta_t)
             self.robot.set_vel(0.0, 0.0)
 
         # Rot2
-        if(rot2):
+        if (rot2):
             self.robot.set_vel(0.0, rot2)
             time.sleep(delta_t)
             self.robot.set_vel(0.0, 0.0)

@@ -10,6 +10,8 @@ from utils import setup_logging, load_config_params
 LOG = setup_logging("commander.log")
 
 # Ref: https://stackoverflow.com/questions/842557/how-to-prevent-a-block-of-code-from-being-interrupted-by-keyboardinterrupt-in-py
+
+
 class DelayedKeyboardInterrupt:
     def __enter__(self):
         self.signal_received = False
@@ -24,6 +26,7 @@ class DelayedKeyboardInterrupt:
         if self.signal_received:
             self.old_handler(*self.signal_received)
 
+
 class BaseCommander:
     def __init__(self, launcher, pipe_sim, pipe_plotter, world_config=None):
         self.launcher = launcher
@@ -35,7 +38,7 @@ class BaseCommander:
                 str(pathlib.Path(os.path.abspath(__file__)).parent), "config", "world.yaml")
         else:
             self.world_config = world_config
-        
+
         self.config_params = load_config_params(self.world_config)
 
         self.init_command_types()
@@ -113,11 +116,11 @@ class BaseCommander:
                 self.pipe_plotter.send(self._PLOT_MAP_CMD)
         else:
             raise Exception("Plotter is not running")
-    
+
     def plot_distribution(self, data):
         if self.launcher.process_plotter.is_alive():
             data_sum = np.sum(data)
-            if(data_sum != 0):
+            if (data_sum != 0):
                 data = (data/data_sum)
 
             self._PLOT_DIST_CMD.payload = data
@@ -127,14 +130,15 @@ class BaseCommander:
             raise Exception("Plotter is not running")
     ### </PLOT FUNCTIONS> ###
 
+
 class Commander(BaseCommander):
     def __init__(self, launcher, pipe_sim, pipe_plotter, world_config=None):
         super().__init__(launcher, pipe_sim, pipe_plotter, world_config)
 
     # Refer EMPTY_MSG
     def _is_valid_sim_data_pose(self, poses):
-        return ( (poses[0].size > 0) and (poses[1].size > 0) )
-    
+        return ((poses[0].size > 0) and (poses[1].size > 0))
+
     # Refer EMPTY_MSG
     def _is_valid_sim_data_sensor(self, sensor_values):
         return type(sensor_values) is not tuple
@@ -175,7 +179,8 @@ class Commander(BaseCommander):
                 poses = self.pipe_sim.recv()
                 # If received EMPTY_MSG
                 if not self._is_valid_sim_data_pose(poses):
-                    raise Exception("No valid data from Simulator; Simulator is probably not running!")
+                    raise Exception(
+                        "No valid data from Simulator; Simulator is probably not running!")
 
                 return poses
         else:
@@ -185,11 +190,12 @@ class Commander(BaseCommander):
         if self.launcher.process_sim.is_alive():
             with DelayedKeyboardInterrupt():
                 self.pipe_sim.send(self._GET_SENSOR_CMD)
-                
+
                 sensor_values = self.pipe_sim.recv()
                 # If received EMPTY_MSG
                 if not self._is_valid_sim_data_sensor(sensor_values):
-                    raise Exception("No valid data from Simulator; Simulator is probably not running!")
+                    raise Exception(
+                        "No valid data from Simulator; Simulator is probably not running!")
 
                 return sensor_values
         else:
@@ -211,5 +217,3 @@ class Commander(BaseCommander):
         else:
             raise Exception("Simulator is not running")
     ### </SIM FUNCTIONS> ###
-
-    

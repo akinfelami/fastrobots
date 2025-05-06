@@ -120,14 +120,14 @@ bool is_drift_running =
     false; // Flag to indicate if the drift routine is active
 bool drift_flag =
     false; // Flag to switch between forward drive and turning phase
-int drive_forward_speed = 155; // PWM for forward movement
-int drive_back_speed = 155;    // PWM for backward movement (after turn)
+int drive_forward_speed = 200; // PWM for forward movement
+int drive_back_speed = 200;    // PWM for backward movement (after turn)
 float drift_point =
     1500.0; // Distance threshold to initiate turn (mm), set to ~3ft
 unsigned long reverse_start_time =
     0; // Time when reverse motion started (after turn)
 const unsigned long REVERSE_DURATION =
-    2000; // Duration for reverse motion (milliseconds)
+    900; // Duration for reverse motion (milliseconds)
 unsigned long start_time_drift = 0; // Timestamp when drift routine started
 //////////////// Kalman Filter Update //////////////////
 void kf_update(Matrix<2, 1> mu_p, Matrix<2, 2> sigma_p, Matrix<2, 1> &mu,
@@ -218,6 +218,18 @@ int linear_pid_control(float current_distance, float target_distance) {
 
 int current_distance;
 
+// NEW: Open-Loop Drift Constants and State
+const unsigned long FORWARD_DURATION_OL = 800; // ms
+const unsigned long STOP_DURATION_OL = 300;    // ms
+const int TURN_PWM_OL = 150;                   // PWM for turning (NEEDS TUNING)
+const unsigned long TURN_DURATION_OL =
+    300; // ms for turning (NEEDS TUNING for ~90 deg)
+const unsigned long REVERSE_DURATION_OL = 900; // ms
+
+enum DriftPhase { INIT, FORWARD, STOP1, TURN, STOP2, REVERSE, DONE };
+DriftPhase current_phase = INIT;
+// END NEW
+
 //////////////// Drift Routine //////////////////
 void start_drift() {
   Serial.println("Starting drift routine...");
@@ -250,99 +262,192 @@ void start_drift() {
 
   distance_sensor_1.startRanging(); // Restart continuous ranging
   record_dmp_data();
-  pid_target = 180.0f;
+  pid_target = 90;
+  current_phase = FORWARD; // Initialize phase for state machine
 }
 
+// filepath: /Users/akin/Desktop/Desktop/dev/fastrobots/lab8/lab8.ino
+
+// Remove the old commented-out drift() function entirely
+
+// NEW Open-Loop Drift Function
 void drift() {
-  int pwm;
-  distance_sensor_1.startRanging();
-  record_dmp_data();
-  float scaledSpeed = (drift_flag ? 0 : drive_forward_speed) / 100.0f;
-  Matrix<2, 1> mu_p = (Ad * mu) + (Bd * scaledSpeed);
-  Matrix<2, 2> sigma_p = (Ad * (sigma * (~Ad))) + sig_u;
+  unsigned long elapsed_time = millis() - start_time_drift;
+  int current_pwm = 0; // Track PWM for logging
+
+  // --- Sensor Readings ---
+  record_dmp_data(); // Update IMU data (yaw_gy)
+
   int raw_distance = -1;
   if (distance_sensor_1.checkForDataReady()) {
     raw_distance = distance_sensor_1.getDistance();
     distance_sensor_1.clearInterrupt();
-    distance_sensor_1.stopRanging();
-    distance_sensor_1.startRanging();
-    kf_update(mu_p, sigma_p, mu, sigma, raw_distance);
-    current_distance = raw_distance;
+    // Keep ranging continuously
+    current_distance = raw_distance; // Update global if needed
   }
+  // --- End Sensor Readings ---
 
-  float estim_dist = mu(0, 0);
-  int pwm_linear = linear_pid_control(estim_dist, drift_point);
-  if (!drift_flag) {
-    if (current_distance > drift_point) {
-      if (curr_idx < MAX_DATA_SIZE) {
-        times[curr_idx] = (float)(millis() - start_time_drift);
-        tof_vals[curr_idx] = current_distance;
-        pwm_vals[curr_idx] = pwm_linear;
-        imu_vals[curr_idx] = yaw_gy;
-        predicted_kalman_vals[curr_idx] = estim_dist;
-        curr_idx++;
-      }
-
-      // Drive motors with scaled PWM and proper direction
-      if (abs(pwm_linear) > 0) {
-        // Scale PWM to avoid deadband
-        int scaled_pwm;
-        if (pwm_linear > 0) {
-          scaled_pwm = map(pwm_linear, 0, 255, 40, 255);
-          drive_in_a_straight_line(0, scaled_pwm, 1.25); // forward
-        } else {
-          scaled_pwm = map(abs(pwm_linear), 0, 255, 40, 255);
-          drive_in_a_straight_line(1,
-
-                                   scaled_pwm, 1.25); // backward
-        }
-      }
+  // --- State Machine for Open-Loop Control ---
+  switch (current_phase) {
+  case FORWARD:
+    if (elapsed_time < FORWARD_DURATION_OL) {
+      drive_in_a_straight_line(1, drive_forward_speed, 1.25);
+      current_pwm = drive_forward_speed;
     } else {
-      drift_flag = true;
       stop();
+      current_pwm = 0;
+      current_phase = STOP1;
     }
-  } else {
-    // Drive and drive back
-    if (abs(pid_target - yaw_gy) > 5) { // if not close enough to target
-      pwm = pid_control(yaw_gy);
-      // Drive motors with scaled PWM and proper direction
-      if (abs(pwm) > 0) {
-        // Scale PWM to avoid deadband
-        int scaled_pwm;
-        if (pwm > 0) { // Turn right (adjust direction '1' or '0' if needed)
-          scaled_pwm = map(pwm, 1, 255, 150, 255); // Map from 1-255
-          turn_around(1, scaled_pwm, 1.25);
-        } else { // pwm < 0, Turn left (adjust direction '1' or '0' if needed)
-          scaled_pwm =
-              map(abs(pwm), 1, 255, 150, 255); // Map absolute value from 1-255
-          turn_around(0, scaled_pwm,
-                      1.25); // Use other direction for turn_around
-        }
-      }
+    break;
+
+  case STOP1:
+    if (elapsed_time < FORWARD_DURATION_OL + STOP_DURATION_OL) {
+      stop(); // Ensure stopped
+      current_pwm = 0;
     } else {
-      if (reverse_start_time ==
-          0) { // Check if timer hasn't been set for reverse yet
-        reverse_start_time = millis();
-      }
-      drive_in_a_straight_line(0, drive_back_speed, 1.25);
-      times[curr_idx] = (float)(millis() - start_time_drift);
-      tof_vals[curr_idx] = current_distance;
-      pwm_vals[curr_idx] = -drive_back_speed;
-      predicted_kalman_vals[curr_idx] = mu(0, 0);
-      imu_vals[curr_idx] = yaw_gy;
-      curr_idx++;
-      // Check duration ONLY after timer has started
-      if (reverse_start_time > 0 &&
-          (millis() - reverse_start_time > REVERSE_DURATION)) {
-        stop();
-        is_drift_running = false;
-        distance_sensor_1.stopRanging();
-        distance_sensor_2.stopRanging();
-        reverse_start_time = 0; // Reset timer flag for next run
-      }
+      current_phase = TURN;
+      current_pwm = 0; // Still stopped before turn starts
     }
+    break;
+
+  case TURN:
+    // Turn right (direction 1). Adjust PWM/duration/direction as needed.
+    if (elapsed_time <
+        FORWARD_DURATION_OL + STOP_DURATION_OL + TURN_DURATION_OL) {
+      turn_around(1, TURN_PWM_OL, 1.25);
+      current_pwm = TURN_PWM_OL; // Log the turn PWM
+    } else {
+      stop();
+      current_pwm = 0;
+      current_phase = STOP2;
+    }
+    break;
+
+  case STOP2:
+    if (elapsed_time < FORWARD_DURATION_OL + STOP_DURATION_OL +
+                           TURN_DURATION_OL + STOP_DURATION_OL) {
+      stop(); // Ensure stopped
+      current_pwm = 0;
+    } else {
+      current_phase = REVERSE;
+      current_pwm = 0; // Still stopped before reverse starts
+    }
+    break;
+
+  case REVERSE:
+    if (elapsed_time < FORWARD_DURATION_OL + STOP_DURATION_OL +
+                           TURN_DURATION_OL + STOP_DURATION_OL +
+                           REVERSE_DURATION_OL) {
+      drive_in_a_straight_line(1, drive_back_speed, 1.25);
+      current_pwm = -drive_back_speed; // Log negative PWM for reverse
+    } else {
+      stop();
+      current_pwm = 0;
+      current_phase = DONE;
+    }
+    break;
+
+  case DONE:
+  default:  // Includes INIT state if somehow entered mid-run
+    stop(); // Ensure stopped
+    current_pwm = 0;
+    if (is_drift_running) {     // Prevent multiple prints/stops
+      is_drift_running = false; // Stop the drift routine
+      distance_sensor_1.stopRanging();
+      // distance_sensor_2.stopRanging(); // If sensor 2 was used
+      Serial.println("Open-loop drift finished.");
+    }
+    break;
   }
+
+  // --- Data Logging ---
+  if (is_drift_running && curr_idx < MAX_DATA_SIZE) {
+    times[curr_idx] = (float)elapsed_time;
+    tof_vals[curr_idx] =
+        raw_distance; // Log raw ToF (-1 if no new data read this cycle)
+    pwm_vals[curr_idx] = current_pwm; // Log actual PWM applied in this phase
+    imu_vals[curr_idx] = yaw_gy;      // Log current yaw
+    predicted_kalman_vals[curr_idx] = -1; // Indicate no Kalman prediction
+    curr_idx++;
+  }
+  // --- End Data Logging ---
 }
+// ... existing code ...
+
+// void drift() {
+//   int pwm;
+//   distance_sensor_1.startRanging();
+//   record_dmp_data();
+//   float scaledSpeed = (drift_flag ? 0 : drive_forward_speed) / 100.0f;
+//   Matrix<2, 1> mu_p = (Ad * mu) + (Bd * scaledSpeed);
+//   Matrix<2, 2> sigma_p = (Ad * (sigma * (~Ad))) + sig_u;
+//   int raw_distance = -1;
+//   if (distance_sensor_1.checkForDataReady()) {
+//     raw_distance = distance_sensor_1.getDistance();
+//     distance_sensor_1.clearInterrupt();
+//     distance_sensor_1.stopRanging();
+//     distance_sensor_1.startRanging();
+//     kf_update(mu_p, sigma_p, mu, sigma, raw_distance);
+//     current_distance = raw_distance;
+//   }
+
+//   float estim_dist = raw_distance != -1 ? raw_distance : (float)mu(0, 0);
+//   if (!drift_flag) {
+//     if (millis() - start_time_drift < 900) {
+//       if (curr_idx < MAX_DATA_SIZE) {
+//         times[curr_idx] = (float)(millis() - start_time_drift);
+//         tof_vals[curr_idx] = current_distance;
+//         pwm_vals[curr_idx] = drive_forward_speed;
+//         ;
+//         imu_vals[curr_idx] = yaw_gy;
+//         predicted_kalman_vals[curr_idx] = estim_dist;
+//         curr_idx++;
+//       }
+//       drive_in_a_straight_line(1, drive_forward_speed, 1.25);
+//     } else {
+//       drift_flag = true;
+//       stop();
+//       delay(300);
+//     }
+//   } else {
+
+//     // Drive and drive back
+//     if (abs(pid_target - yaw_gy) > 5) { // if not close enough to target
+//       pwm = pid_control(yaw_gy);
+//       // Drive motors with scaled PWM and proper direction
+//       if (abs(pwm) > 0) {
+//         // Scale PWM to avoid deadband
+//         int scaled_pwm;
+//         if (pwm > 0) {
+//           scaled_pwm = map(pwm, 1, 255, 70, 255); // Map from 1-255
+//           turn_around(1, scaled_pwm, 1.25);
+//         }
+//       }
+//     } else {
+//       if (reverse_start_time ==
+//           0) { // Check if timer hasn't been set for reverse yet
+//         reverse_start_time = millis();
+//       }
+//       delay(100);
+//       drive_in_a_straight_line(0, drive_back_speed, 1.25);
+//       times[curr_idx] = (float)(millis() - start_time_drift);
+//       tof_vals[curr_idx] = current_distance;
+//       pwm_vals[curr_idx] = -drive_back_speed;
+//       predicted_kalman_vals[curr_idx] = mu(0, 0);
+//       imu_vals[curr_idx] = yaw_gy;
+//       curr_idx++;
+//       // Check duration ONLY after timer has started
+//       if (reverse_start_time > 0 &&
+//           (millis() - reverse_start_time > REVERSE_DURATION)) {
+//         stop();
+//         is_drift_running = false;
+//         distance_sensor_1.stopRanging();
+//         distance_sensor_2.stopRanging();
+//         reverse_start_time = 0; // Reset timer flag for next run
+//       }
+//     }
+//   }
+// }
 
 //////////////// Command Handling //////////////////
 void handle_command() {
@@ -412,6 +517,7 @@ void handle_command() {
   case STOP_PID: // Renamed from STOP_PID to STOP_DRIFT for clarity
     Serial.println("Stopping drift routine via command.");
     is_drift_running = false; // Corrected variable name
+    drift_flag = false;
     distance_sensor_1.stopRanging();
     distance_sensor_2.stopRanging(); // Stop both sensors
     stop();                          // Stop motors
@@ -499,6 +605,7 @@ void setup() {
 
   // Reset FIFO
   success &= (myICM.resetFIFO() == ICM_20948_Stat_Ok);
+  myICM.setDMPODRrate(DMP_ODR_Reg_Quat6, 1);
 
   // Check success
   if (!success) {
@@ -557,7 +664,6 @@ void record_dmp_data() {
 
   // Serial.print("YAW: ");
   // Serial.println(yaw_gy);
-
   // Only delay between readings if no more data is available
   if (myICM.status != ICM_20948_Stat_FIFOMoreDataAvail) {
     delay(10);

@@ -308,8 +308,8 @@ class BaseLocalization():
         return np.exp(-np.power(x - mu, 2) / (2*np.power(sigma, 2)))
 
     # Execute the rotation behavior to measure observations
-    def get_observation_data(self, rot_vel=120):
-        self.obs_range_data, self.obs_bearing_data = self.robot.perform_observation_loop(
+    async def get_observation_data(self, rot_vel=120):
+        self.obs_range_data, self.obs_bearing_data = await self.robot.perform_observation_loop(
             rot_vel)
 
     # Print prior belief statistics (for after prediction step) and plot data in the plotter
@@ -331,7 +331,7 @@ class BaseLocalization():
             "POS ERROR        : ({:.3f}, {:.3f}, {:.3f})".format(*pos_error))
 
         # Plot data
-        if(plot_data == True):
+        if (plot_data == True):
             self.cmdr.plot_gt(current_gt[0],
                               current_gt[1])
             self.cmdr.plot_odom(current_odom[0],
@@ -365,7 +365,7 @@ class BaseLocalization():
         LOG.info("POS ERROR     : ({:.3f}, {:.3f}, {:.3f})".format(*pos_error))
 
         # Plot data
-        if(plot_data == True):
+        if (plot_data == True):
             self.cmdr.plot_bel(current_belief[0],
                                current_belief[1])
 

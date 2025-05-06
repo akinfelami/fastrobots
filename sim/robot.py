@@ -5,6 +5,7 @@ from utils import load_config_params
 from math import degrees as math_degrees
 from numpy import array as np_array
 
+
 class BaseRobot():
     """A class to interact with the virtual robot
     """
@@ -15,7 +16,7 @@ class BaseRobot():
                 str(pathlib.Path(os.path.abspath(__file__)).parent), "config", "world.yaml")
         else:
             self.world_config = world_config
-        
+
         self.config_params = load_config_params(self.world_config)
 
     def set_vel(self, v, w):
@@ -42,21 +43,21 @@ class VirtualRobot(BaseRobot):
         super().__init__()
 
         self.cmdr = commander
-    
+
     def get_pose_in_degrees(self, pose):
         """Convert a pose whose units are (meters, meters, radians) 
         to a pose with units (meters, meters, degrees)
-        
+
         Keyword arguments:
             pose -- Simulator pose as a numpy array of (x,y,a) whose units are (meters, meters, radians)
         Returns:
             pose -- Simulator pose as a numpy array of (x,y,a) whose units are (meters, meters, degrees)
         """
         return np_array([pose[0], pose[1], math_degrees(pose[2])])
-        
+
     def set_vel(self, v, w):
         """Set command velocity
-        
+
         Keyword arguments:
             v -- Linear Velocity (meters/second)
             w -- Angular Velocity (radians/second)
@@ -65,7 +66,7 @@ class VirtualRobot(BaseRobot):
 
     def get_pose(self):
         """Get robot pose
-        
+
         Returns:
             current_odom -- Odometry Pose (meters, meters, degrees)
             current_gt   -- Ground Truth Pose (meters, meters, degrees)
@@ -75,7 +76,7 @@ class VirtualRobot(BaseRobot):
 
     def get_sensor_data(self):
         """Get sensor data
-        
+
         Returns:
             A numpy column array of sensor range readings
         """
@@ -86,7 +87,7 @@ class VirtualRobot(BaseRobot):
         in place while collecting equidistant (in the angular space) sensor data, 
         starting with the first sensor reading taken at the robot's current heading. 
         The number of sensor readings depends on "observations_count" defined in world.yaml.
-        
+
         Keyword arguments:
             rot_vel -- (Optional) Angular Velocity for loop (degrees/second)
         Returns:

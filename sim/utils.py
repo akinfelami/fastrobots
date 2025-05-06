@@ -17,6 +17,8 @@ STREAM_LOG_LEVEL = logging.INFO
 FILE_LOG_LEVEL = logging.DEBUG
 
 # https://stackoverflow.com/questions/5469286/how-to-get-the-index-of-a-maximum-element-in-a-numpy-array-along-one-axis
+
+
 def get_max(a):
     argmax = (np_unravel_index(a.argmax(), a.shape), a.max())
     # print(argmax)
@@ -101,7 +103,7 @@ def load_config_params(file_name):
 
             config_params["map_lines"] = [
                 eval(line) for line in config_list["world"]["lines"]]
-            
+
             config_params["dimensions"] = (config_list["robot"]["dimensions"]["length"]/2.0,
                                            config_list["robot"]["dimensions"]["breadth"]/2.0)
 
@@ -140,14 +142,16 @@ def load_config_params(file_name):
         raise Exception("Error loading config file: " + str(file_name))
 
 # Convert a tile map into a real map
+
+
 def convert_tile_to_real_map(lines):
     tile_size = 0.3048
     lines = np.array(lines)*tile_size
 
-    start_xs = lines[:,0,0].tolist()
-    start_ys = lines[:,0,1].tolist()
-    end_xs = lines[:,1,0].tolist()
-    end_ys = lines[:,1,1].tolist()
+    start_xs = lines[:, 0, 0].tolist()
+    start_ys = lines[:, 0, 1].tolist()
+    end_xs = lines[:, 1, 0].tolist()
+    end_ys = lines[:, 1, 1].tolist()
 
     all_xs = start_xs + end_xs
     all_ys = start_ys + end_ys
@@ -156,48 +160,57 @@ def convert_tile_to_real_map(lines):
     print("max x: {:+.4f} ".format(np.max(all_xs)))
     print("min y: {:+.4f} ".format(np.min(all_ys)))
     print("max y: {:+.4f}".format(np.max(all_ys)))
-    
+
     print("\ncell_size_x: {:.4f} ".format(tile_size))
     print("cell_size_y: {:.4f} ".format(tile_size))
-    
-    print("\nmax_cells_x: {:.4f} ".format( (np.max(all_xs) - np.min(all_xs))/tile_size ))
-    print("max_cells_y: {:.4f} ".format( (np.max(all_ys) - np.min(all_ys))/tile_size ))
-    
+
+    print("\nmax_cells_x: {:.4f} ".format(
+        (np.max(all_xs) - np.min(all_xs))/tile_size))
+    print("max_cells_y: {:.4f} ".format(
+        (np.max(all_ys) - np.min(all_ys))/tile_size))
+
     print("\n\nLines:")
     for i in lines:
-        print("- ({:.4f},{:.4f}), ({:.4f},{:.4f})".format(i[0][0], i[0][1], i[1][0], i[1][1]))
-    
+        print(
+            "- ({:.4f},{:.4f}), ({:.4f},{:.4f})".format(i[0][0], i[0][1], i[1][0], i[1][1]))
+
 # Plot observation points in GREEN and observation views in RED
-def plot_mapper_observations(x, y, a, mapper, cmdr, delayed_plot = False):    
-    cx,cy,ca = mapper.to_map(x,y,math.degrees(a))
-    obs_xs = mapper.obs_points_x[cx,cy,ca]
-    obs_ys = mapper.obs_points_y[cx,cy,ca]
-    obs_views = mapper.obs_views[cx,cy,ca]
+
+
+def plot_mapper_observations(x, y, a, mapper, cmdr, delayed_plot=False):
+    cx, cy, ca = mapper.to_map(x, y, math.degrees(a))
+    obs_xs = mapper.obs_points_x[cx, cy, ca]
+    obs_ys = mapper.obs_points_y[cx, cy, ca]
+    obs_views = mapper.obs_views[cx, cy, ca]
     obs_angles = np.radians(np.arange(0, 360, 360/mapper.OBS_PER_CELL))
 
-    for x,y in zip(obs_xs, obs_ys):
-        cmdr.plot_gt(x,y)
+    for x, y in zip(obs_xs, obs_ys):
+        cmdr.plot_gt(x, y)
 
-    xx,yy,aa = mapper.from_map(cx,cy,ca)
-    for view, angle in zip(obs_views,obs_angles):
-        cmdr.plot_odom(xx+(view*math.cos(math.radians(aa) + angle)), yy+(view*math.sin(math.radians(aa) + angle)))
+    xx, yy, aa = mapper.from_map(cx, cy, ca)
+    for view, angle in zip(obs_views, obs_angles):
+        cmdr.plot_odom(xx+(view*math.cos(math.radians(aa) + angle)),
+                       yy+(view*math.sin(math.radians(aa) + angle)))
         if delayed_plot:
             time.sleep(0.15)
 
 # Plot robot observations in BLUE
-def plot_robot_observations(mapper, cmdr, robot, delayed_plot = False):
+
+
+def plot_robot_observations(mapper, cmdr, robot, delayed_plot=False):
     pose, gt_pose = robot.get_pose()
-    
+
     obs_views, obs_angles = robot.perform_observation_loop()
     print("Obs angles: ", obs_angles)
 
     obs_views = [i[0] for i in obs_views]
     obs_angles = np.radians(obs_angles)
-    
+
     # obs_static_angles = np.radians(np.arange(0, 360, 360/mapper.OBS_PER_CELL))
-    
-    for view, angle in zip(obs_views,obs_angles):
-        cmdr.plot_bel(gt_pose[0]+(view*math.cos(angle)), gt_pose[1]+(view*math.sin(angle)))
+
+    for view, angle in zip(obs_views, obs_angles):
+        cmdr.plot_bel(gt_pose[0]+(view*math.cos(angle)),
+                      gt_pose[1]+(view*math.sin(angle)))
         if delayed_plot:
             time.sleep(0.15)
     return gt_pose

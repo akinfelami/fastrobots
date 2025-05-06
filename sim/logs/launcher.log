@@ -24,3 +24,80 @@
 2025-04-10 12:07:36,875 | MainThread   | [ERROR   ] | stop                |: Plotter is not running
 2025-04-10 12:07:39,337 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
 2025-04-10 12:07:39,955 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 10:09:06,534 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-22 10:09:07,164 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 10:34:21,733 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-22 10:34:22,348 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 10:37:08,819 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-22 10:37:09,461 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 10:37:11,321 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-22 10:37:11,982 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 10:39:30,833 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-22 10:39:32,029 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 10:39:33,594 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 10:39:43,235 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-22 10:39:43,857 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 10:41:45,619 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-22 10:41:46,244 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 10:47:50,972 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 10:47:51,699 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-22 10:47:52,310 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 11:40:28,480 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-22 11:40:29,116 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 12:13:28,007 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-22 12:13:28,009 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 12:13:30,957 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 12:13:33,211 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-22 12:13:33,824 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 14:15:54,901 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 14:16:10,233 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-22 14:16:10,850 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 14:16:20,903 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 14:16:23,150 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-22 14:16:23,763 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 14:18:47,752 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 14:18:48,528 | MainThread   | [INFO    ] | start               |: Creating New Simulator Process
+2025-04-22 14:18:49,140 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-22 14:24:36,235 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-22 14:24:36,890 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 14:29:27,846 | MainThread   | [INFO    ] | stop                |: Simulator is stopped
+2025-04-22 14:29:29,076 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 15:05:02,852 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 15:18:06,287 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 15:23:19,368 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 15:23:20,790 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-22 16:17:05,830 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-22 16:17:09,889 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 11:38:15,463 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-28 11:38:18,172 | MainThread   | [ERROR   ] | start               |: Plotter is already running
+2025-04-28 11:38:22,038 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 11:38:28,809 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 11:41:25,151 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-28 11:41:27,645 | MainThread   | [ERROR   ] | start               |: Plotter is already running
+2025-04-28 11:42:37,658 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 11:42:39,834 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 11:44:13,754 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 11:44:15,350 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 11:49:10,668 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 11:49:13,069 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 12:00:05,666 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 12:00:07,393 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 12:10:48,012 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 12:10:49,949 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 12:14:06,456 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 12:14:07,999 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 12:16:16,208 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 12:16:17,473 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 12:17:29,485 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 12:17:30,038 | MainThread   | [ERROR   ] | stop                |: Plotter is not running
+2025-04-28 14:05:55,765 | MainThread   | [INFO    ] | GET_GUI             |: GUI is already running. Shutdown notebook to force restart the GUI.
+2025-04-28 14:05:59,977 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 14:20:49,454 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 14:20:51,043 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 14:23:12,623 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 14:23:14,834 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 14:30:48,011 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 14:30:49,677 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 14:31:56,688 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
+2025-04-28 14:31:58,702 | MainThread   | [INFO    ] | start               |: Creating New Plotter Process
+2025-04-28 14:33:29,847 | MainThread   | [INFO    ] | stop                |: Plotter is stopped
