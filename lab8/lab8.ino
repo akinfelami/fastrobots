@@ -219,7 +219,7 @@ int linear_pid_control(float current_distance, float target_distance) {
 int current_distance;
 
 // NEW: Open-Loop Drift Constants and State
-const unsigned long FORWARD_DURATION_OL = 800; // ms
+const unsigned long FORWARD_DURATION_OL = 900; // ms
 const unsigned long STOP_DURATION_OL = 300;    // ms
 const int TURN_PWM_OL = 150;                   // PWM for turning (NEEDS TUNING)
 const unsigned long TURN_DURATION_OL =

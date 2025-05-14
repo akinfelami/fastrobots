@@ -8,4 +8,5 @@ class CMD(Enum):
     STOP_PID = 3
     SET_PID_GAINS = 4
     SET_SETPOINT = 5
-    DONE = 6
+    LOCALIZE = 6
+    DRIVE = 7
